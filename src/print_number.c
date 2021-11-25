@@ -6,7 +6,7 @@
 /*   By: grenato- <grenato-@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 22:03:15 by grenato-          #+#    #+#             */
-/*   Updated: 2021/11/25 00:04:22 by grenato-         ###   ########.fr       */
+/*   Updated: 2021/11/25 20:32:43 by grenato-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,47 +23,51 @@ int	ft_print_int(va_list *ap)
 	len = ft_strlen(number);
 	ft_putstr_fd(number, 1);
 	free(number);
+	number = NULL;
 	return (len);
 }
 
 int	ft_print_positive_int(va_list *ap)
 {
-	unsigned int	number;
-	char			*num;
+	char			*number;
+	unsigned int	num;
 	int				len;
 
-	number = va_arg(*ap, unsigned int);
-	num = ft_get_base_num(number, DEC);
-	len = ft_strlen(num);
-	ft_putstr_fd(num, 1);
-	free(num);
+	num = va_arg(*ap, unsigned int);
+	number = ft_get_base_num(num, DEC);
+	len = ft_strlen(number);
+	ft_putstr_fd(number, 1);
+	free(number);
+	number = NULL;
 	return (len);
 }
 
 int	ft_print_low_hex(va_list *ap)
 {
-	unsigned int	number;
-	char			*num;
+	char			*number;
+	unsigned int	num;
 	int				len;
 
-	number = va_arg(*ap, unsigned int);
-	num = ft_get_base_num(number, HEX_LOW);
-	len = ft_strlen(num);
-	ft_putstr_fd(num, 1);
-	free(num);
+	num = va_arg(*ap, unsigned int);
+	number = ft_get_base_num(num, HEX_LOW);
+	len = ft_strlen(number);
+	ft_putstr_fd(number, 1);
+	free(number);
+	number = NULL;
 	return (len);
 }
 
 int	ft_print_up_hex(va_list *ap)
 {
-	unsigned int	number;
-	char			*num;
+	char			*number;
+	unsigned int	num;
 	int				len;
 
-	number = va_arg(*ap, unsigned int);
-	num = ft_get_base_num(number, HEX_UP);
-	len = ft_strlen(num);
-	ft_putstr_fd(num, 1);
-	free(num);
+	num = va_arg(*ap, unsigned int);
+	number = ft_get_base_num(num, HEX_UP);
+	len = ft_strlen(number);
+	ft_putstr_fd(number, 1);
+	free(number);
+	number = NULL;
 	return (len);
 }
