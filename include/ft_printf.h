@@ -6,7 +6,7 @@
 /*   By: grenato- <grenato-@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 22:10:40 by grenato-          #+#    #+#             */
-/*   Updated: 2021/11/24 22:33:44 by grenato-         ###   ########.fr       */
+/*   Updated: 2021/11/25 20:23:46 by grenato-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,23 +37,23 @@
 # include <stdlib.h>
 # include "libft.h"
 
-int	ft_printf(const char *format, ...);
+int		ft_printf(const char *format, ...);
 
-int	ft_print_arg(char flag, va_list *ap);
+int		ft_print_arg(char flag, va_list *ap);
 
-int	ft_print_char(va_list *ap);
+int		ft_print_char(va_list *ap);
 
-int	ft_print_string(va_list *ap);
+int		ft_print_string(va_list *ap);
 
-int	ft_print_int(va_list *ap);
+int		ft_print_int(va_list *ap);
 
-int	ft_print_add(va_list *ap);
+int		ft_print_add(va_list *ap);
 
-int	ft_print_positive_int(va_list *ap);
+int		ft_print_positive_int(va_list *ap);
 
-int	ft_print_low_hex(va_list *ap);
+int		ft_print_low_hex(va_list *ap);
 
-int	ft_print_up_hex(va_list *ap);
+int		ft_print_up_hex(va_list *ap);
 
 char	*ft_get_base_num(size_t add, char *base);
 
