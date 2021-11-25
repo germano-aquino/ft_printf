@@ -6,13 +6,13 @@
 /*   By: grenato- <grenato-@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 11:26:20 by grenato-          #+#    #+#             */
-/*   Updated: 2021/08/21 11:26:42 by grenato-         ###   ########.fr       */
+/*   Updated: 2021/11/25 00:06:15 by grenato-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_getSignal(const char *str, int *i)
+static int	ft_get_signal(const char *str, int *i)
 {
 	int	signal;
 
@@ -38,7 +38,7 @@ int	ft_atoi(const char *str)
 	number = 0;
 	while ((9 <= str[i] && str[i] <= 13) || str[i] == 32)
 		i++;
-	signal = ft_getSignal(str, &i);
+	signal = ft_get_signal(str, &i);
 	while ('0' <= str[i] && str[i] <= '9')
 	{
 		count++;

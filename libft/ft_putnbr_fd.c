@@ -6,14 +6,14 @@
 /*   By: grenato- <grenato-@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 11:33:39 by grenato-          #+#    #+#             */
-/*   Updated: 2021/08/21 11:33:40 by grenato-         ###   ########.fr       */
+/*   Updated: 2021/11/25 00:14:20 by grenato-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "libft.h"
 
-static void	ft_handleNegatives(int *nbr, int fd)
+static void	ft_handle_negatives(int *nbr, int fd)
 {
 	write(fd, "-", 1);
 	if (*nbr == -2147483648)
@@ -27,24 +27,24 @@ static void	ft_handleNegatives(int *nbr, int fd)
 void	ft_putnbr_fd(int n, int fd)
 {
 	char		dig;
-	long int	tenPower;
-	int			firstDigitNoZero;
+	long int	ten_power;
+	int			first_digit_no_zero;
 
-	tenPower = 10000000000;
-	firstDigitNoZero = 0;
+	ten_power = 10000000000;
+	first_digit_no_zero = 0;
 	if (n == 0)
 		write(fd, "0", 1);
 	if (n < 0)
-		ft_handleNegatives(&n, fd);
-	while (tenPower)
+		ft_handle_negatives(&n, fd);
+	while (ten_power)
 	{
-		dig = (n / tenPower) + '0';
-		if (firstDigitNoZero || dig != '0')
+		dig = (n / ten_power) + '0';
+		if (first_digit_no_zero || dig != '0')
 		{
-			firstDigitNoZero = 1;
+			first_digit_no_zero = 1;
 			write(fd, &dig, 1);
 		}
-		n = n % tenPower;
-		tenPower = tenPower / 10;
+		n %= ten_power;
+		ten_power /= 10;
 	}
 }

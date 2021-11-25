@@ -6,13 +6,13 @@
 /*   By: grenato- <grenato-@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 11:34:33 by grenato-          #+#    #+#             */
-/*   Updated: 2021/08/21 11:34:37 by grenato-         ###   ########.fr       */
+/*   Updated: 2021/11/25 00:09:58 by grenato-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-static int	ft_isCharInSet(char chr, char const *set)
+static int	ft_is_char_in_set(char chr, char const *set)
 {
 	int	i;
 
@@ -26,45 +26,45 @@ static int	ft_isCharInSet(char chr, char const *set)
 	return (0);
 }
 
-static int	ft_getStrTrimLength(char const *str, char const *set)
+static int	ft_get_str_trim_length(char const *str, char const *set)
 {
-	int	startIndex;
-	int	endIndex;
+	int	start_index;
+	int	end_index;
 
-	startIndex = 0;
-	while (ft_isCharInSet(str[startIndex], set))
-		startIndex++;
-	if (str[startIndex] == '\0')
+	start_index = 0;
+	while (ft_is_char_in_set(str[start_index], set))
+		start_index++;
+	if (str[start_index] == '\0')
 		return (0);
-	endIndex = startIndex;
-	while (str[endIndex] != '\0')
-		endIndex++;
-	endIndex--;
-	while (ft_isCharInSet(str[endIndex], set))
-		endIndex--;
-	return (endIndex - startIndex + 1);
+	end_index = start_index;
+	while (str[end_index] != '\0')
+		end_index++;
+	end_index--;
+	while (ft_is_char_in_set(str[end_index], set))
+		end_index--;
+	return (end_index - start_index + 1);
 }
 
 char	*ft_strtrim(char const *str, char const *set)
 {
 	int		len;
-	int		startIndex;
+	int		start_index;
 	int		i;
 	char	*ptr;
 
 	if (str == NULL)
 		return (0);
-	len = ft_getStrTrimLength(str, set);
+	len = ft_get_str_trim_length(str, set);
 	ptr = (char *) malloc((len + 1) * sizeof(char));
 	if (ptr == NULL)
 		return (0);
-	startIndex = 0;
-	while (ft_isCharInSet(str[startIndex], set))
-		startIndex++;
+	start_index = 0;
+	while (ft_is_char_in_set(str[start_index], set))
+		start_index++;
 	i = 0;
 	while (i < len)
 	{
-		ptr[i] = str[startIndex + i];
+		ptr[i] = str[start_index + i];
 		i++;
 	}
 	ptr[i] = '\0';

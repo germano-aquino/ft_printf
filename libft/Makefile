@@ -6,7 +6,7 @@
 #    By: grenato- <grenato-@student.42sp.org.br     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/21 11:25:54 by grenato-          #+#    #+#              #
-#    Updated: 2021/11/22 23:06:32 by grenato-         ###   ########.fr        #
+#    Updated: 2021/11/24 23:58:02 by grenato-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,7 @@ C_SOURCE =	ft_atoi.c\
 			ft_toupper.c
 
 # .h file
-H_SOURCE = ../../include/libft.h
+H_SOURCE = ../include
 
 # mandatory object files
 OBJ = $(C_SOURCE:.c=.o)

@@ -1,40 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: grenato- <grenato-@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/22 22:10:35 by grenato-          #+#    #+#             */
-/*   Updated: 2021/11/22 23:28:37 by grenato-         ###   ########.fr       */
+/*   Created: 2021/08/21 11:32:14 by grenato-          #+#    #+#             */
+/*   Updated: 2021/11/25 00:08:01 by grenato-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/ft_printf.h"
+#include "libft.h"
 
-int	ft_count_args(char *format)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void(*del)(void *))
 {
-	char	*iter;
-	int		num_args;
+	t_list	*new_lst;
+	t_list	*iter;
 
-	num_args = 0;
-	iter = format;
-	while(iter)
+	if (!lst)
+		return (0);
+	new_lst = NULL;
+	while (lst)
 	{
-		if (*iter == '%' && *(iter + 1) != '%')
-			num_args++;
-		iter++;
+		iter = ft_lstnew(f(lst->content));
+		if (!iter)
+			ft_lstclear(&iter, del);
+		else
+			ft_lstadd_back(&new_lst, iter);
+		lst = lst->next;
 	}
-	return (num_args);
-}
-
-int	ft_printf(char *format, ...)
-{
-	va_list	ap;
-	char	*ch;
-	int		num_of_args;
-
-	num_of_args = ft_count_args(format);
-	va_start(ap, num_of_args);
-	
+	return (new_lst);
 }

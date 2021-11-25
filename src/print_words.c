@@ -1,33 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   print_words.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: grenato- <grenato-@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/21 11:32:14 by grenato-          #+#    #+#             */
-/*   Updated: 2021/08/21 16:35:30 by grenato-         ###   ########.fr       */
+/*   Created: 2021/11/24 22:03:11 by grenato-          #+#    #+#             */
+/*   Updated: 2021/11/24 23:58:38 by grenato-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void(*del)(void *))
+int	ft_print_char(va_list *ap)
 {
-	t_list	*newLst;
-	t_list	*iter;
+	unsigned char	ch;
 
-	if (!lst)
-		return (0);
-	newLst = NULL;
-	while (lst)
+	ch = va_arg(*ap, int);
+	write(1, &ch, 1);
+	return (1);
+}
+
+int	ft_print_string(va_list *ap)
+{
+	int		len;
+	char	*str;
+
+	len = 0;
+	str = va_arg(*ap, char *);
+	if (str != NULL)
 	{
-		iter = ft_lstnew(f(lst->content));
-		if (!iter)
-			ft_lstclear(&iter, del);
-		else
-			ft_lstadd_back(&newLst, iter);
-		lst = lst->next;
+		len = ft_strlen(str);
+		ft_putstr_fd(str, 1);
 	}
-	return (newLst);
+	else
+	{
+		len = 6;
+		ft_putstr_fd("(null)", 1);
+	}
+	return (len);
 }

@@ -6,7 +6,7 @@
 /*   By: grenato- <grenato-@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 11:34:02 by grenato-          #+#    #+#             */
-/*   Updated: 2021/08/21 11:34:02 by grenato-         ###   ########.fr       */
+/*   Updated: 2021/11/25 00:12:44 by grenato-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 char	*ft_strdup(const char *str)
 {
-	char	*newStr;
+	char	*new_str;
 	int		length;
 
 	length = 0;
 	while (str[length] != '\0')
 		length++;
-	newStr = malloc((length + 1) * sizeof(char));
-	if (!newStr)
+	new_str = malloc((length + 1) * sizeof(char));
+	if (!new_str)
 		return (0);
 	length = 0;
 	while (str[length] != '\0')
 	{
-		newStr[length] = str[length];
+		new_str[length] = str[length];
 		length++;
 	}
-	newStr[length] = '\0';
-	return (newStr);
+	new_str[length] = '\0';
+	return (new_str);
 }

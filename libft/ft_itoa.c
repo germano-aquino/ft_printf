@@ -6,7 +6,7 @@
 /*   By: grenato- <grenato-@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 11:31:28 by grenato-          #+#    #+#             */
-/*   Updated: 2021/08/21 11:31:28 by grenato-         ###   ########.fr       */
+/*   Updated: 2021/11/25 00:17:14 by grenato-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,55 +14,55 @@
 #include <stdlib.h>
 #include "libft.h"
 
-static void	ft_calculateNumber(int numberOfDigits, int n, int isNegative,
-	 char *number)
+static void	ft_calculate_number(int number_of_digits, int n, int is_negative,
+	char *number)
 {
-	while (numberOfDigits != isNegative - 1)
+	while (number_of_digits != is_negative - 1)
 	{
-		number[numberOfDigits] = (n % 10) + '0';
+		number[number_of_digits] = (n % 10) + '0';
 		n = n / 10;
-		numberOfDigits--;
+		number_of_digits--;
 	}
-	if (isNegative)
+	if (is_negative)
 		number[0] = '-';
 }
 
-static int	ft_getNumberOfDigits(int n)
+static int	ft_get_number_of_digits(int n)
 {
-	int	numberOfDigits;
+	int	number_of_digits;
 
-	numberOfDigits = 0;
+	number_of_digits = 0;
 	if (n == 0)
 		return (1);
 	while (n)
 	{
-		numberOfDigits++;
+		number_of_digits++;
 		n = n / 10;
 	}
-	return (numberOfDigits);
+	return (number_of_digits);
 }
 
 char	*ft_itoa(int n)
 {
-	int		numberOfDigits;
-	int		isNegative;
+	int		number_of_digits;
+	int		is_negative;
 	char	*number;
 
-	numberOfDigits = ft_getNumberOfDigits(n);
-	isNegative = 0;
+	number_of_digits = ft_get_number_of_digits(n);
+	is_negative = 0;
 	if (n < 0)
 	{
-		isNegative = 1;
+		is_negative = 1;
 		if (n == INT_MIN)
 			return (ft_strdup("-2147483648"));
 		n = -n;
 	}
-	number = (char *)malloc(sizeof(char) * (numberOfDigits + 1 + isNegative));
+	number = (char *)malloc(number_of_digits + 1 + is_negative);
 	if (number == NULL)
 		return (0);
-	number[numberOfDigits + isNegative] = '\0';
-	if (!isNegative)
-		numberOfDigits--;
-	ft_calculateNumber(numberOfDigits, n, isNegative, number);
+	number[number_of_digits + is_negative] = '\0';
+	if (!is_negative)
+		number_of_digits--;
+	ft_calculate_number(number_of_digits, n, is_negative, number);
 	return (number);
 }

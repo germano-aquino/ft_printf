@@ -6,36 +6,36 @@
 /*   By: grenato- <grenato-@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/21 11:33:55 by grenato-          #+#    #+#             */
-/*   Updated: 2021/08/21 11:33:55 by grenato-         ###   ########.fr       */
+/*   Updated: 2021/11/25 00:16:43 by grenato-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-static int	ft_getNumberOfStrings(const char *s, char c)
+static int	ft_get_number_of_strings(const char *s, char c)
 {
 	int	counter;
-	int	newStringWasCounted;
+	int	new_string_was_counted;
 	int	i;
 
 	counter = 0;
 	i = 0;
-	newStringWasCounted = 0;
+	new_string_was_counted = 0;
 	while (s[i] != '\0')
 	{
-		if (!newStringWasCounted && s[i] != c)
+		if (!new_string_was_counted && s[i] != c)
 		{
 			counter++;
-			newStringWasCounted = 1;
+			new_string_was_counted = 1;
 		}
-		if (newStringWasCounted && s[i] == c)
-			newStringWasCounted = 0;
+		if (new_string_was_counted && s[i] == c)
+			new_string_was_counted = 0;
 		i++;
 	}
 	return (counter);
 }
 
-static void	ft_getValidIndexes(char const *s, char c, int *indexes)
+static void	ft_get_valid_indexes(char const *s, char c, int *indexes)
 {
 	int	index;
 
@@ -48,7 +48,7 @@ static void	ft_getValidIndexes(char const *s, char c, int *indexes)
 	indexes[1] = index - 1;
 }
 
-static void	ft_copyStringToPtr(char const *s, int *indexes, char *ptr)
+static void	ft_copy_string_to_ptr(char const *s, int *indexes, char *ptr)
 {
 	int	i;
 
@@ -62,7 +62,7 @@ static void	ft_copyStringToPtr(char const *s, int *indexes, char *ptr)
 	indexes[0] = indexes[1] + 1;
 }
 
-static void	ft_variablesInitiation(int *indexes)
+static void	ft_variables_initiation(int *indexes)
 {
 	indexes[0] = 0;
 	indexes[1] = 0;
@@ -76,26 +76,26 @@ static void	ft_variablesInitiation(int *indexes)
 char	**ft_split(char const *s, char c)
 {
 	int		ind[3];
-	int		nStr;
+	int		n_str;
 	char	**split;
 
-	ft_variablesInitiation(ind);
+	ft_variables_initiation(ind);
 	if (s == NULL)
 		return (0);
-	nStr = ft_getNumberOfStrings(s, c);
-	split = (char **) malloc(sizeof(char *) * (nStr + 1));
+	n_str = ft_get_number_of_strings(s, c);
+	split = (char **) malloc(sizeof(char *) * (n_str + 1));
 	if (split == NULL)
 		return (0);
-	while (ind[2] < nStr)
+	while (ind[2] < n_str)
 	{
-		ft_getValidIndexes(s, c, ind);
+		ft_get_valid_indexes(s, c, ind);
 		split[ind[2]] = (char *)malloc(sizeof(char) * (ind[1] - ind[0] + 2));
 		if (split[ind[2]] == NULL)
 		{
 			free(split);
 			return (0);
 		}
-		ft_copyStringToPtr(s, ind, split[ind[2]]);
+		ft_copy_string_to_ptr(s, ind, split[ind[2]]);
 		ind[2]++;
 	}
 	split[ind[2]] = NULL;
