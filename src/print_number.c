@@ -6,13 +6,13 @@
 /*   By: grenato- <grenato-@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 22:03:15 by grenato-          #+#    #+#             */
-/*   Updated: 2021/11/25 20:32:43 by grenato-         ###   ########.fr       */
+/*   Updated: 2021/11/25 22:30:22 by grenato-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_int(va_list *ap)
+int	ft_print_int(va_list *ap, int flags)
 {
 	char	*number;
 	int		num;
@@ -27,7 +27,7 @@ int	ft_print_int(va_list *ap)
 	return (len);
 }
 
-int	ft_print_positive_int(va_list *ap)
+int	ft_print_positive_int(va_list *ap, int flags)
 {
 	char			*number;
 	unsigned int	num;
@@ -42,7 +42,7 @@ int	ft_print_positive_int(va_list *ap)
 	return (len);
 }
 
-int	ft_print_low_hex(va_list *ap)
+int	ft_print_low_hex(va_list *ap, int flags)
 {
 	char			*number;
 	unsigned int	num;
@@ -57,7 +57,7 @@ int	ft_print_low_hex(va_list *ap)
 	return (len);
 }
 
-int	ft_print_up_hex(va_list *ap)
+int	ft_print_up_hex(va_list *ap, int flags)
 {
 	char			*number;
 	unsigned int	num;
