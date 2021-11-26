@@ -6,7 +6,7 @@
 /*   By: grenato- <grenato-@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 22:10:35 by grenato-          #+#    #+#             */
-/*   Updated: 2021/11/25 22:30:23 by grenato-         ###   ########.fr       */
+/*   Updated: 2021/11/26 07:21:20 by grenato-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_print_arg(char conv_spec, int flags, va_list *ap)
 	else if (conv_spec == 'p')
 		len += ft_print_add(ap);
 	else if (conv_spec == 'u')
-		len += ft_print_positive_int(ap, flags);
+		len += ft_print_positive_int(ap);
 	else if (conv_spec == 'x')
 		len += ft_print_low_hex(ap, flags);
 	else if (conv_spec == 'X')
@@ -39,13 +39,28 @@ int	ft_print_arg(char conv_spec, int flags, va_list *ap)
 	return (len);
 }
 
+int	ft_is_chr_in_str(const char *str, char ch)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (str[i] == ch)
+			break;
+		i++;
+	}
+	if (str[i] != '\0' || ch == '\0')
+		return (1);
+	return (0);
+}
+
 int	ft_get_flags(const char **format)
 {
-	char	*chr;
 	int		flags;
 
-	chr = ft_strchr("cspdiuxX%", **format);
-	while (!*chr)
+	flags = 0;
+	while (!ft_is_chr_in_str("csdipuxX%", **format))
 	{
 		if (**format == '#')
 			flags |= 1;
@@ -54,7 +69,6 @@ int	ft_get_flags(const char **format)
 		else if (**format == '+')
 			flags |= 4;
 		(*format)++;
-		chr = ft_strchr("cspdiuxX%", **format);
 	}
 	return (flags);
 }

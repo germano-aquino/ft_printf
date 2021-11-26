@@ -6,7 +6,7 @@
 /*   By: grenato- <grenato-@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 22:10:40 by grenato-          #+#    #+#             */
-/*   Updated: 2021/11/25 22:31:25 by grenato-         ###   ########.fr       */
+/*   Updated: 2021/11/26 07:21:13 by grenato-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 #  define APPLE 1
 # endif
 
+# include <stdio.h>
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -48,7 +49,7 @@ int		ft_print_int(va_list *ap, int flags);
 
 int		ft_print_add(va_list *ap);
 
-int		ft_print_positive_int(va_list *ap, int flags);
+int		ft_print_positive_int(va_list *ap);
 
 int		ft_print_low_hex(va_list *ap, int flags);
 
