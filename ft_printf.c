@@ -6,7 +6,7 @@
 /*   By: grenato- <grenato-@student.42sp.org.br     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 22:10:35 by grenato-          #+#    #+#             */
-/*   Updated: 2021/11/26 07:21:20 by grenato-         ###   ########.fr       */
+/*   Updated: 2021/11/27 08:36:34 by grenato-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	ft_is_chr_in_str(const char *str, char ch)
 	while (str[i] != '\0')
 	{
 		if (str[i] == ch)
-			break;
+			break ;
 		i++;
 	}
 	if (str[i] != '\0' || ch == '\0')

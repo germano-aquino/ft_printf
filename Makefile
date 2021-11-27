@@ -6,7 +6,7 @@
 #    By: grenato- <grenato-@student.42sp.org.br     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/24 19:19:45 by grenato-          #+#    #+#              #
-#    Updated: 2021/11/24 22:37:25 by grenato-         ###   ########.fr        #
+#    Updated: 2021/11/26 07:36:39 by grenato-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,8 @@ $(NAME): $(OBJ)
 	$(MAKE) -C ${LIBFT_DIR}
 	cp ${LIBFT} ${NAME}
 	ar rcs $(NAME) $(OBJ)
+
+bonus: all
 
 clean:
 	rm -rf $(OBJ)
